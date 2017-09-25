@@ -63,7 +63,7 @@
 		}
 	},
 	"variables": {
-		"vhdStorageAccountName": "[concat(parameters('env'),nocvhds')]",
+		"vhdStorageAccountName": "[concat(parameters('env'),'diagnostics')]",
 		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('env'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('env'),'-ad2-vm')]",
@@ -110,8 +110,15 @@
 		{
 			"name": "[variables('adAvailabilitySetName')]",
 			"type": "Microsoft.Compute/availabilitySets",
-			"apiVersion": "2016-03-30",
-			"location": "[resourceGroup().location]"
+			"apiVersion": "2017-03-30",
+			"location": "[resourceGroup().location]",
+			"properties": {
+				"PlatformUpdateDomainCount": 3,
+				"PlatformFaultDomainCount": 2
+			},
+			"sku": {
+				"name": "Aligned"
+			}
 		}, {
 			"name": "[variables('adPDCVMName')]",
 			"type": "Microsoft.Compute/virtualMachines",
