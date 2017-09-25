@@ -237,7 +237,7 @@
 						"version": "latest"
 					},
 					"osDisk": {
-						"name": "[concat(variables('adPDCVMName'),'-osdisk')]",
+						"name": "[concat(variables('adBDCVMName'),'-osdisk')]",
 						"caching": "ReadWrite",
 						"createOption": "FromImage"
 					},
