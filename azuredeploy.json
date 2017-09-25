@@ -101,7 +101,7 @@
 		"configureADBDCTemplateUri": "[concat(parameters('_artifactsLocation'),parameters('env'),'/nestedtemplates/configureADBDC.json', parameters('_artifactsLocationSasToken'))]",
 		"adPDCModulesURL": "[concat(parameters('_artifactsLocation'),parameters('env'),'/DSC/CreateADPDC.zip', parameters('_artifactsLocationSasToken'))]",
 		"adPDCConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
-		"adBDCPreparationModulesURL": "[concat(parameters('_artifactsLocation'),'/',parameters('env'),'/DSC/PrepareADBDC.zip', parameters('_artifactsLocationSasToken'))]",
+		"adBDCPreparationModulesURL": "[concat(parameters('_artifactsLocation'),parameters('env'),'/DSC/PrepareADBDC.zip', parameters('_artifactsLocationSasToken'))]",
 		"adBDCPreparationFunction": "PrepareADBDC.ps1\\PrepareADBDC",
 		"adBDCConfigurationModulesURL": "[concat(parameters('_artifactsLocation'),parameters('env'),'/DSC/ConfigureADBDC.zip', parameters('_artifactsLocationSasToken'))]",
 		"adBDCConfigurationFunction": "ConfigureADBDC.ps1\\ConfigureADBDC"
