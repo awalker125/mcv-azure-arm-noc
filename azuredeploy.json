@@ -3,7 +3,7 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"envId": {
-			"type": "int",
+			"type": "String",
 			"metadata": {
 				"description": "The env id to use. This should be between 1 and 254. We use this for ports and ip addresses which is where the limitation of 1-254 comes from"
 			},
