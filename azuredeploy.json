@@ -70,7 +70,7 @@
 		}
 	},
 	"variables": {
-		"vhdStorageAccountName": "[concat(parameters('envName'),parameters('envId'),'diagnostics')]",
+		"vhdStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
 		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
