@@ -243,7 +243,7 @@
 					},
 					"dataDisks": [
 						{
-							"name": "[concat(variables('adPDCVMName'),'-data-disk1')]",
+							"name": "[concat(variables('adBDCVMName'),'-data-disk1')]",
 							"caching": "None",
 							"diskSizeGB": "[variables('adDataDiskSize')]",
 							"lun": 0,
