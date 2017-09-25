@@ -129,7 +129,7 @@
 		}, {
 			"name": "[variables('adPDCVMName')]",
 			"type": "Microsoft.Compute/virtualMachines",
-			"apiVersion": "2016-03-30",
+			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
 				"[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]", "[resourceId('Microsoft.Network/networkInterfaces',variables('adPDCNicName'))]", "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]", "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
@@ -155,17 +155,11 @@
 					},
 					"osDisk": {
 						"name": "osdisk",
-						"vhd": {
-							"uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))).primaryEndpoints.blob,'vhds0/','osdisk.vhd')]"
-						},
 						"caching": "ReadWrite",
 						"createOption": "FromImage"
 					},
 					"dataDisks": [
 						{
-							"vhd": {
-								"uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))).primaryEndpoints.blob,'vhds0/', variables('adPDCDataDisk'),'-1.vhd')]"
-							},
 							"name": "[concat(variables('adPDCVMName'),'-data-disk1')]",
 							"caching": "None",
 							"diskSizeGB": "[variables('adDataDiskSize')]",
@@ -218,7 +212,7 @@
 		}, {
 			"name": "[variables('adBDCVMName')]",
 			"type": "Microsoft.Compute/virtualMachines",
-			"apiVersion": "2016-03-30",
+			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
 				"[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]", "[resourceId('Microsoft.Network/networkInterfaces',variables('adBDCNicName'))]", "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]", "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
@@ -244,18 +238,12 @@
 					},
 					"osDisk": {
 						"name": "osdisk",
-						"vhd": {
-							"uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))).primaryEndpoints.blob,'vhds1/','osdisk.vhd')]"
-						},
 						"caching": "ReadWrite",
 						"createOption": "FromImage"
 					},
 					"dataDisks": [
 						{
-							"vhd": {
-								"uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))).primaryEndpoints.blob,'vhds1/',variables('adBDCDataDisk'),'-1.vhd')]"
-							},
-							"name": "[concat(variables('adBDCVMName'),'-data-disk1')]",
+							"name": "[concat(variables('adPDCVMName'),'-data-disk1')]",
 							"caching": "None",
 							"diskSizeGB": "[variables('adDataDiskSize')]",
 							"lun": 0,
