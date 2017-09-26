@@ -71,7 +71,6 @@
 	},
 	"variables": {
 		"diagStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
-		"diagStorageAccountNameAccountId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/',variables('diagStorageAccountName'))]",
 		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
@@ -214,32 +213,6 @@
 							}
 						}
 					}
-				}, {
-					"name": "Microsoft.Insights.VMDiagnosticsSettings",
-					"type": "extensions",
-					"location": "[resourceGroup().location]",
-					"apiVersion": "2015-06-15",
-					"dependsOn": [
-						"[resourceId('Microsoft.Compute/virtualMachines', variables('adPDCVMName'))]"
-					],
-					"tags": {
-						"displayName": "AzureDiagnostics"
-					},
-					"properties": {
-						"publisher": "Microsoft.Azure.Diagnostics",
-						"type": "IaaSDiagnostics",
-						"typeHandlerVersion": "1.5",
-						"autoUpgradeMinorVersion": true,
-						"settings": {
-							"xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), variables('vmName'), variables('wadcfgxend')))]",
-							"storageAccount": "variables('diagStorageAccountName')"
-						},
-						"protectedSettings": {
-							"storageAccountName": "variables('diagStorageAccountName')",
-							"storageAccountKey": "[listkeys(variables('diagStorageAccountNameAccountId'), '2017-06-01').key1]",
-							"storageAccountEndPoint": "https://core.windows.net"
-						}
-					}
 				}
 			]
 		}, {
@@ -297,36 +270,7 @@
 						"storageUri": "[concat('https', '://', variables('diagStorageAccountName'), '.blob.core.windows.net', '/')]"
 					}
 				}
-			},
-			"resources": [
-				{
-					"name": "Microsoft.Insights.VMDiagnosticsSettings",
-					"type": "extensions",
-					"location": "[resourceGroup().location]",
-					"apiVersion": "2015-06-15",
-					"dependsOn": [
-						"[resourceId('Microsoft.Compute/virtualMachines', variables('adBDCVMName'))]"
-					],
-					"tags": {
-						"displayName": "AzureDiagnostics"
-					},
-					"properties": {
-						"publisher": "Microsoft.Azure.Diagnostics",
-						"type": "IaaSDiagnostics",
-						"typeHandlerVersion": "1.5",
-						"autoUpgradeMinorVersion": true,
-						"settings": {
-							"xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), variables('vmName'), variables('wadcfgxend')))]",
-							"storageAccount": "variables('diagStorageAccountName')"
-						},
-						"protectedSettings": {
-							"storageAccountName": "variables('diagStorageAccountName')",
-							"storageAccountKey": "[listkeys(variables('diagStorageAccountNameAccountId'), '2017-06-01').key1]",
-							"storageAccountEndPoint": "https://core.windows.net"
-						}
-					}
-				}
-			]
+			}
 		}, {
 			"type": "Microsoft.Compute/virtualMachines/extensions",
 			"name": "[concat(variables('adBDCVMName'),'/PrepareBDC')]",
