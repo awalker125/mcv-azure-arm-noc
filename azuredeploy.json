@@ -71,7 +71,7 @@
 	},
 	"variables": {
 		"diagStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
-		"diagStorageAccountNameAccountId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',variables('diagStorageAccountName'), '/providers/','Microsoft.Storage/storageAccounts/',variables('diagStorageAccountName'))]",
+		"diagStorageAccountNameAccountId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/',variables('diagStorageAccountName'))]",
 		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
