@@ -71,6 +71,7 @@
 	},
 	"variables": {
 		"diagStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
+		"diagStorageAccountNameAccountId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',variables('diagStorageAccountName'), '/providers/','Microsoft.Storage/storageAccounts/',variables('diagStorageAccountName'))]",
 		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
@@ -235,7 +236,7 @@
 						},
 						"protectedSettings": {
 							"storageAccountName": "variables('diagStorageAccountName')",
-							"storageAccountKey": "[listkeys(variables('accountid'), '2015-05-01-preview').key1]",
+							"storageAccountKey": "[listkeys(variables('diagStorageAccountNameAccountId'), '2016-03-30').key1]",
 							"storageAccountEndPoint": "https://core.windows.net"
 						}
 					}
