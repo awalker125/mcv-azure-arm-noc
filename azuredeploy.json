@@ -70,7 +70,7 @@
 		}
 	},
 	"variables": {
-		"vhdStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
+		"diagStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
 		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
@@ -132,7 +132,7 @@
 			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
-				"[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]", "[resourceId('Microsoft.Network/networkInterfaces',variables('adPDCNicName'))]", "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]", "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
+				"[resourceId('Microsoft.Storage/storageAccounts',variables('diagStorageAccountName'))]", "[resourceId('Microsoft.Network/networkInterfaces',variables('adPDCNicName'))]", "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]", "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
 			],
 			"properties": {
 				"hardwareProfile": {
@@ -178,7 +178,7 @@
 				"diagnosticsProfile": {
 					"bootDiagnostics": {
 						"enabled": true,
-						"storageUri": "[concat('https', '://', parameters('vhdStorageAccountName'), '.blob.core.windows.net', '/')]"
+						"storageUri": "[concat('https', '://', variables('diagStorageAccountName'), '.blob.core.windows.net', '/')]"
 					}
 				}
 			},
@@ -221,7 +221,7 @@
 			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
-				"[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]", "[resourceId('Microsoft.Network/networkInterfaces',variables('adBDCNicName'))]", "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]", "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
+				"[resourceId('Microsoft.Storage/storageAccounts',variables('diagStorageAccountName'))]", "[resourceId('Microsoft.Network/networkInterfaces',variables('adBDCNicName'))]", "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]", "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
 			],
 			"properties": {
 				"hardwareProfile": {
@@ -267,7 +267,7 @@
 				"diagnosticsProfile": {
 					"bootDiagnostics": {
 						"enabled": true,
-						"storageUri": "[concat('https', '://', parameters('vhdStorageAccountName'), '.blob.core.windows.net', '/')]"
+						"storageUri": "[concat('https', '://', variables('diagStorageAccountName'), '.blob.core.windows.net', '/')]"
 					}
 				}
 			}
@@ -594,7 +594,7 @@
 				}
 			}
 		}, {
-			"name": "[variables('vhdStorageAccountName')]",
+			"name": "[variables('diagStorageAccountName')]",
 			"type": "Microsoft.Storage/storageAccounts",
 			"apiVersion": "2016-05-01",
 			"location": "[resourceGroup().location]",
