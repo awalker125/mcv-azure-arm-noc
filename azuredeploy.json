@@ -154,14 +154,12 @@
 						"version": "latest"
 					},
 					"osDisk": {
-						"accountType": "[variables('storageAccountType')]",
 						"name": "[concat(variables('adPDCVMName'),'-osdisk')]",
 						"caching": "ReadWrite",
 						"createOption": "FromImage"
 					},
 					"dataDisks": [
 						{
-							"accountType": "[variables('storageAccountType')]",
 							"name": "[concat(variables('adPDCVMName'),'-data-disk1')]",
 							"caching": "None",
 							"diskSizeGB": "[variables('adDataDiskSize')]",
