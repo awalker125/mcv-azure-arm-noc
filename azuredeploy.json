@@ -71,7 +71,7 @@
 	},
 	"variables": {
 		"vhdStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
-		"storageAccountType": "Premium_LRS",
+		"storageAccountType": "Standard_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
 		"imagePublisher": "MicrosoftWindowsServer",
@@ -101,7 +101,7 @@
 		"adBEAddressPoolID": "[concat(variables('adlbID'),'/backendAddressPools/',variables('adLBBE'))]",
 		"adPDCDataDisk": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm-data001')]",
 		"adBDCDataDisk": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm-data001')]",
-		"adDataDiskSize": 1000,
+		"adDataDiskSize": 128,
 		"vnetTemplateUri": "[concat(parameters('_artifactsLocation'),parameters('envName'),parameters('envId'),'/nestedtemplates/vnet.json', parameters('_artifactsLocationSasToken'))]",
 		"nicTemplateUri": "[concat(parameters('_artifactsLocation'),parameters('envName'),parameters('envId'),'/nestedtemplates/nic.json', parameters('_artifactsLocationSasToken'))]",
 		"vnetwithDNSTemplateUri": "[concat(parameters('_artifactsLocation'),parameters('envName'),parameters('envId'),'/nestedtemplates/vnet-with-dns-server.json', parameters('_artifactsLocationSasToken'))]",
