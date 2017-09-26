@@ -71,7 +71,7 @@
 	},
 	"variables": {
 		"vhdStorageAccountName": "[concat(parameters('envName'),parameters('envId'),uniqueString(resourceGroup().id))]",
-		"storageAccountType": "Standard_LRS",
+		"storageAccountType": "Premium_LRS",
 		"adPDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad1-vm')]",
 		"adBDCVMName": "[concat(parameters('envName'),parameters('envId'),'-ad2-vm')]",
 		"imagePublisher": "MicrosoftWindowsServer",
@@ -154,12 +154,18 @@
 						"version": "latest"
 					},
 					"osDisk": {
+						"sku": {
+							"name": "[variables('storageAccountType')]"
+						},
 						"name": "[concat(variables('adPDCVMName'),'-osdisk')]",
 						"caching": "ReadWrite",
 						"createOption": "FromImage"
 					},
 					"dataDisks": [
 						{
+							"sku": {
+								"name": "[variables('storageAccountType')]"
+							},
 							"name": "[concat(variables('adPDCVMName'),'-data-disk1')]",
 							"caching": "None",
 							"diskSizeGB": "[variables('adDataDiskSize')]",
