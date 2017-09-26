@@ -236,7 +236,7 @@
 						},
 						"protectedSettings": {
 							"storageAccountName": "variables('diagStorageAccountName')",
-							"storageAccountKey": "[listkeys(variables('diagStorageAccountNameAccountId'), '2016-03-30').key1]",
+							"storageAccountKey": "[listkeys(variables('diagStorageAccountNameAccountId'), '2017-06-01').key1]",
 							"storageAccountEndPoint": "https://core.windows.net"
 						}
 					}
