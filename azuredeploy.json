@@ -79,7 +79,7 @@
 		"imageSKU": "2016-Datacenter",
 		"adAvailabilitySetName": "[concat(parameters('envName'),parameters('envId'),'-ad-as')]",
 		"publicIPAddressName": "[concat(parameters('envName'),parameters('envId'),'-ad-lb-pip')]",
-		"adVMSize": "Standard_DS2_v2",
+		"adVMSize": "Standard_A1",
 		"adLBFE": "LBFE",
 		"adLBBE": "LBBE",
 		"adPDCRDPNAT": "adPDCRDP",
