@@ -609,7 +609,7 @@
 		}, {
 			"name": "[variables('rdgwAvailabilitySetName')]",
 			"type": "Microsoft.Compute/availabilitySets",
-			"apiVersion": "2015-06-15",
+			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"properties": {
 				"PlatformUpdateDomainCount": 3,
@@ -621,7 +621,7 @@
 		}, {
 			"name": "[variables('rdcbAvailabilitySetName')]",
 			"type": "Microsoft.Compute/availabilitySets",
-			"apiVersion": "2015-06-15",
+			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"properties": {
 				"PlatformUpdateDomainCount": 3,
@@ -633,7 +633,7 @@
 		}, {
 			"name": "[variables('rdsessAvailabilitySetName')]",
 			"type": "Microsoft.Compute/availabilitySets",
-			"apiVersion": "2015-06-15",
+			"apiVersion": "2017-03-30",
 			"location": "[resourceGroup().location]",
 			"properties": {
 				"PlatformUpdateDomainCount": 3,
