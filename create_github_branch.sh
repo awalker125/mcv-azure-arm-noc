@@ -29,6 +29,9 @@ then
 	exit 97
 fi
 
+#Delete the branch if it already exists
+curl -s -H "Authorization: token ${GITHUB_API_KEY}" -X DELETE https://api.github.com/repos/${GITHUB_USER}/${GITHUB_PROJECT}/git/refs/heads/${NEW_BRANCH_PREFIX}${1}
+
 curl -s -H "Authorization: token ${GITHUB_API_KEY}" \
 -X POST --header 'Content-Type: application/json' https://api.github.com/repos/${GITHUB_USER}/${GITHUB_PROJECT}/git/refs \
 -d '{"ref":"refs/heads/'${NEW_BRANCH_PREFIX}${1}'","sha":'${SOURCE_REF}'}'
