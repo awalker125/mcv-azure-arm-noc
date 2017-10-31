@@ -12,7 +12,7 @@
 		"envName": {
 			"type": "string",
 			"metadata": {
-				"description": "The env name. This is used in the branch to use from github as well. So you must create a branch that matches the env name."
+				"description": "The env name . This is used in the branch to use from github as well. So you must create a branch that matches the env name."
 			}
 		},
 		"adminUsername": {
